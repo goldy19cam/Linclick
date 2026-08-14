@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/Chrome-icon.png</file>
+        <file>images/Edge-icon.jpg</file>
+        <file>images/Maps-icon.png</file>
+        <file>images/PSP-icon.jpg</file>
+        <file>images/Telegram-icon.png</file>
+        <file>images/VLC_icon.png</file>
+        <file>images/VSCode-icon.png</file>
+        <file>images/Yango-icon.jpg</file>
+        <file>images/SOCADEL.png</file>
+    </qresource>
+</RCC>

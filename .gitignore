@@ -1,0 +1,27 @@
+# Dossiers de build
+build/
+build-*/
+debug/
+release/
+
+# Fichiers générés par qmake
+*.pro.user
+*.pro.user.*
+Makefile
+Makefile.*
+.qmake.stash
+object_script.*.release
+object_script.*.debug
+
+# Fichiers objets et binaires
+*.o
+*.obj
+*.exe
+moc_*.cpp
+moc_*.h
+qrc_*.cpp
+ui_*.h
+
+# Fichiers de base de données SQLite
+*.db
+*.sqlite
