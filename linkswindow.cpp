@@ -112,7 +112,7 @@ LinksWindow::LinksWindow(QWidget *parent) : QWidget(parent)
     frameLayout->addWidget(logoLabel);
     frameLayout->addSpacing(20);
     frameLayout->addWidget(paragraphe);
-    frameLayout->addSpacing(30);
+    frameLayout->addSpacing(60);
     frameLayout->addLayout(boutons);
     frameLayout->addStretch();
 }
