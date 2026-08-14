@@ -98,50 +98,6 @@ LinksWindow::LinksWindow(QWidget *parent) : QWidget(parent)
         QDesktopServices::openUrl(QUrl("https://www.bing.com/ck/a?!&&p=2ff650cd2ceed99cb4737fc6ff8910c2d1324c5bc69d3f28070907e5db2c0483JmltdHM9MTc4NTk3NDQwMA&ptn=3&ver=2&hsh=4&fclid=380fe9a4-9b62-69ec-3f1c-fe099a2f68bf&psq=yango&u=a1aHR0cHM6Ly95YW5nby5jb20vZnJfY20v"));
     });
 
-    QToolButton *boutonEdge = new QToolButton(this);
-    boutonEdge->setAutoRaise(true);
-    boutonEdge->setFixedSize(160,160);
-    boutonEdge->setText("MICROSOFT EDGE");
-    boutonEdge->setIcon(QIcon(":/images/Edge-icon.jpg"));
-    boutonEdge->setIconSize(QSize(80,80));
-    boutonEdge->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-    connect(boutonEdge, &QToolButton::clicked, this, [](){
-        QProcess::startDetached("C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe");
-    });
-
-    QToolButton *boutonChrome = new QToolButton(this);
-    boutonChrome->setAutoRaise(true);
-    boutonChrome->setFixedSize(160,160);
-    boutonChrome->setText("CHROME");
-    boutonChrome->setIcon(QIcon(":/images/Chrome-icon.png"));
-    boutonChrome->setIconSize(QSize(80,80));
-    boutonChrome->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-    connect(boutonChrome, &QToolButton::clicked, this, [](){
-        QProcess::startDetached("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe");
-    });
-
-    QToolButton *boutonVlc = new QToolButton(this);
-    boutonVlc->setAutoRaise(true);
-    boutonVlc->setFixedSize(160,160);
-    boutonVlc->setText("VLC");
-    boutonVlc->setIcon(QIcon(":/images/VLC_icon.png"));
-    boutonVlc->setIconSize(QSize(80,80));
-    boutonVlc->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-    connect(boutonVlc, &QToolButton::clicked, this, [](){
-        QProcess::startDetached("C:/Program Files (x86)/VideoLAN/VLC/vlc.exe");
-    });
-
-    QToolButton *boutonVscode = new QToolButton(this);
-    boutonVscode->setAutoRaise(true);
-    boutonVscode->setFixedSize(160,160);
-    boutonVscode->setText("VS CODE");
-    boutonVscode->setIcon(QIcon(":/images/VSCode-icon.png"));
-    boutonVscode->setIconSize(QSize(80,80));
-    boutonVscode->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-    connect(boutonVscode, &QToolButton::clicked, this, [](){
-        QProcess::startDetached("C:/Users/user/AppData/Local/Programs/Microsoft VS Code/Code.exe");
-    });
-
     //pour alliner les boutons cliquables d'applications de maniere horizontale
     QHBoxLayout *boutons = new QHBoxLayout(this);
     boutons->addStretch();
@@ -151,22 +107,12 @@ LinksWindow::LinksWindow(QWidget *parent) : QWidget(parent)
     boutons->addWidget(boutonYango, 0);
     boutons->addStretch();
 
-    QHBoxLayout *boutons2 = new QHBoxLayout(this);
-    boutons2->addStretch();
-    boutons2->addWidget(boutonEdge, 0);
-    boutons2->addWidget(boutonChrome, 0);
-    boutons2->addWidget(boutonVlc, 0);
-    boutons2->addWidget(boutonVscode, 0);
-    boutons2->addStretch();
-
     //permet d'empiler verticalement les elements en ordre d'arrivee dans le layout de la frame
     QVBoxLayout *frameLayout = new QVBoxLayout(monCadre);
     frameLayout->addWidget(logoLabel);
     frameLayout->addSpacing(20);
     frameLayout->addWidget(paragraphe);
     frameLayout->addSpacing(30);
-    frameLayout->addLayout(boutons2);
-    frameLayout->addSpacing(10);
     frameLayout->addLayout(boutons);
     frameLayout->addStretch();
 }
