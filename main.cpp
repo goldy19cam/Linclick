@@ -1,5 +1,6 @@
 //Point d'entree du programme: initialise l'application , la base de donnees et affiche la fenetere du formulaire
 #include <QApplication>
+#include <QIcon>
 #include <QMessageBox>
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlQuery>
@@ -29,6 +30,7 @@ bool initDatabase()
 }
 int main(int argc, char *argv[]){
     QApplication app(argc, argv);
+    app.setWindowIcon(QIcon(":/images/linkclick_icon_1024.png"));
 
     if(!initDatabase())
         return -1;
