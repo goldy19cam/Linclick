@@ -50,6 +50,7 @@ FormWindow::FormWindow(QWidget *parent) : QWidget(parent)
     nomEdit->setFont(police);
     QRegularExpression nomRegex("^[A-Za-zÀ-ÖØ-öø-ÿ ]*$");//verifie que la valeur entree ne contient que des lettres
     nomEdit->setFixedSize(700,40);
+    nomEdit->setPlaceholderText("Nom Complet");
     nomEdit->setValidator(new QRegularExpressionValidator(nomRegex, this));//applique la verification au champ Nom
 
     numeroEdit = new QLineEdit(this);
@@ -133,6 +134,8 @@ void FormWindow::refresh()
     if (countQuery.exec() && countQuery.next()){
         int nombreExistant = countQuery.value(0).toInt();
         nombreDemandesSpin->setValue(nombreExistant + 1);
+    }else{
+        nombreDemandesSpin->setValue(1);
     }
 }
 
@@ -161,17 +164,30 @@ bool FormWindow::enregistrerDemande()
         return false;
     }
 
-    //permet lexecution et lenvoi de notre requete SQL
+    //permet lexecution et l'envoi de notre requete SQL
     QSqlQuery query;
-    query.prepare("INSERT INTO demandes (nom, numero, date_demande, nombre_demandes)"
-                  "VALUES (:nom, :numero, :date, :nb)");
+    query.prepare("INSERT INTO demandes (nom, numero, date_demande)"
+                  "VALUES (:nom, :numero, :date)");
     query.bindValue(":nom", nomEdit->text().trimmed());
     query.bindValue(":numero", numeroEdit->text().trimmed());
     query.bindValue(":date", dateTimeEdit->dateTime().toString("yyyy-MM-dd HH:mm:ss"));
-    query.bindValue(":nb", nombreDemandesSpin->value());
 
     if (!query.exec()){
         QMessageBox::critical(this, "Erreur", "Echec de l'enregistrement :" + query.lastError().text());
+        return false;
+    }
+
+    //ajout de la deuxieme table
+    QSqlQuery userquery;
+    userquery.prepare("INSERT INTO register (nom, numero, nombre_demandes)"
+                  "VALUES (:nom, :numero, :nb) "
+                  "ON CONFLICT(nom, numero) DO UPDATE SET nombre_demandes = nombre_demandes + 1");//incremente le nombre de demandes si on saisit le meme nom plusieurs fois
+    userquery.bindValue(":nom", nomEdit->text().trimmed());
+    userquery.bindValue(":numero", numeroEdit->text().trimmed());
+    userquery.bindValue(":nb", nombreDemandesSpin->value());
+
+    if (!userquery.exec()){
+        QMessageBox::critical(this, "Erreur", "Echec de l'enregistrement :" + userquery.lastError().text());
         return false;
     }
     return true;

@@ -22,10 +22,17 @@ bool initDatabase()
     QSqlQuery query;
     query.exec("CREATE TABLE IF NOT EXISTS demandes ("
                "id INTEGER PRIMARY KEY AUTOINCREMENT,"
-               "nom TEXT NONT NULL,"
+               "nom TEXT NONT NULL COLLATE NOCASE,"
                "numero TEXT NOT NULL,"
-               "date_demande TEXT NOT NULL,"
-               "nombre_demandes INTEGER NOT NULL)");
+               "date_demande TEXT NOT NULL)");
+
+    //ajout de la deuxieme table
+    query.exec("CREATE TABLE IF NOT EXISTS register("
+               "nom TEXT NOT NULL COLLATE NOCASE,"
+               "numero TEXT NOT NULL,"
+              "nombre_demandes INTEGER NOT NULL,"
+               "unique(nom, numero))");
+
     return true;
 }
 int main(int argc, char *argv[]){
