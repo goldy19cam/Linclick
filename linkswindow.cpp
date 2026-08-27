@@ -54,57 +54,53 @@ LinksWindow::LinksWindow(QWidget *parent) : QWidget(parent)
     mainLayout->addStretch();
 
     //pour les boutons cliquables vers les applis de mon PC on peut aussi utiliser QPushButton mais ce sera plus difficile d'inserer les icones au dessus du nom de l'application
-    QToolButton *boutonSocadel = new QToolButton(this);
-    boutonSocadel->setAutoRaise(true);//enleve les bordures des boutons
-    boutonSocadel->setText("SOCADEL");
-    boutonSocadel->setFixedSize(160,160);//taille du bouton
-    boutonSocadel->setIcon(QIcon(":/images/SOCADEL.png"));
-    boutonSocadel->setIconSize(QSize(100,80));//taille de l'icone
-    boutonSocadel->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);//pour positionner l'icone au dessus du nom de l'application
-    connect(boutonSocadel, &QToolButton::clicked, this, [](){
+    QToolButton *bouton1 = new QToolButton(this);
+  bouton1->setAutoRaise(true);//enleve les bordures des boutons
+   bouton1->setFixedSize(160,160);//taille du bouton
+   bouton1->setIcon(QIcon(":/images/SOCADEL.png"));
+  bouton1->setIconSize(QSize(120,100));//taille de l'icone
+   bouton1->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);//pour positionner l'icone au dessus du nom de l'application
+    connect(bouton1, &QToolButton::clicked, this, [](){
         QDesktopServices::openUrl(QUrl("https://my.socadel.cm/"));
     });
 
-    QToolButton *boutonTelegram = new QToolButton(this);
-    boutonTelegram->setAutoRaise(true);
-    boutonTelegram->setFixedSize(160,160);
-    boutonTelegram->setText("TELEGRAM");
-    boutonTelegram->setIcon(QIcon(":/images/Telegram-icon.png"));
-    boutonTelegram->setIconSize(QSize(80,80));
-    boutonTelegram->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-    connect(boutonTelegram, &QToolButton::clicked, this, [](){
+    QToolButton *bouton2 = new QToolButton(this);
+    bouton2->setAutoRaise(true);
+    bouton2->setFixedSize(160,160);
+   bouton2->setIcon(QIcon(":/images/Telegram-icon.png"));
+   bouton2->setIconSize(QSize(100,100));
+    bouton2->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+    connect(bouton2, &QToolButton::clicked, this, [](){
         QDesktopServices::openUrl(QUrl("https://www.bing.com/ck/a?!&&p=cf7a7337d8314d326d8bfc0732504f0bc9465ed2c50591eb0ae196a1f93871bdJmltdHM9MTc4NjA2MDgwMA&ptn=3&ver=2&hsh=4&fclid=2be59cb9-d541-6720-3a29-8b17d499665e&psq=telegram&u=a1aHR0cHM6Ly9kZXNrdG9wLnRlbGVncmFtLm9yZy8"));
     });
 
-    QToolButton *boutonGmap = new QToolButton(this);
-    boutonGmap->setAutoRaise(true);
-    boutonGmap->setFixedSize(160,160);
-    boutonGmap->setText("GOOGLE MAPS");
-    boutonGmap->setIcon(QIcon(":/images/Maps-icon.png"));
-    boutonGmap->setIconSize(QSize(80,80));
-    boutonGmap->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-    connect(boutonGmap, &QToolButton::clicked, this, [](){
+    QToolButton *bouton3 = new QToolButton(this);
+    bouton3->setAutoRaise(true);
+    bouton3->setFixedSize(160,160);
+    bouton3->setIcon(QIcon(":/images/Maps-icon.png"));
+   bouton3->setIconSize(QSize(100,100));
+    bouton3->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+    connect(bouton3, &QToolButton::clicked, this, [](){
         QDesktopServices::openUrl(QUrl("https://www.bing.com/ck/a?!&&p=6bfca3c64c38d0dcfabc5b90be20f38237d3b16b78820ff67f9038417ce27943JmltdHM9MTc4NTk3NDQwMA&ptn=3&ver=2&hsh=4&fclid=380fe9a4-9b62-69ec-3f1c-fe099a2f68bf&psq=google+maps&u=a1aHR0cHM6Ly9tYXBzLmdvb2dsZS5jb20v"));
     });
 
-    QToolButton *boutonYango = new QToolButton(this);
-    boutonYango->setAutoRaise(true);
-    boutonYango->setFixedSize(160,160);
-    boutonYango->setText("YANGO");
-    boutonYango->setIcon(QIcon(":/images/Yango-icon.jpg"));
-    boutonYango->setIconSize(QSize(80,80));
-    boutonYango->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-    connect(boutonYango, &QToolButton::clicked, this, [](){
+    QToolButton *bouton4 = new QToolButton(this);
+    bouton4 ->setAutoRaise(true);
+   bouton4 ->setFixedSize(160,160);
+   bouton4 ->setIcon(QIcon(":/images/Yango-icon.jpg"));
+   bouton4 ->setIconSize(QSize(100,100));
+    bouton4 ->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+    connect(bouton4 , &QToolButton::clicked, this, [](){
         QDesktopServices::openUrl(QUrl("https://www.bing.com/ck/a?!&&p=2ff650cd2ceed99cb4737fc6ff8910c2d1324c5bc69d3f28070907e5db2c0483JmltdHM9MTc4NTk3NDQwMA&ptn=3&ver=2&hsh=4&fclid=380fe9a4-9b62-69ec-3f1c-fe099a2f68bf&psq=yango&u=a1aHR0cHM6Ly95YW5nby5jb20vZnJfY20v"));
     });
 
     //pour alliner les boutons cliquables d'applications de maniere horizontale
     QHBoxLayout *boutons = new QHBoxLayout(this);
     boutons->addStretch();
-    boutons->addWidget(boutonSocadel, 0);
-    boutons->addWidget(boutonTelegram, 0);
-    boutons->addWidget(boutonGmap, 0);
-    boutons->addWidget(boutonYango, 0);
+    boutons->addWidget(bouton1, 0);
+    boutons->addWidget(bouton2, 0);
+    boutons->addWidget(bouton3, 0);
+    boutons->addWidget(bouton4, 0);
     boutons->addStretch();
 
     //permet d'empiler verticalement les elements en ordre d'arrivee dans le layout de la frame
